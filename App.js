@@ -14,7 +14,7 @@ function HomeStack({ navigation }) {
         <Stack.Navigator screenOptions={getScreenOptions(navigation)}>
             <Stack.Screen name="Home" component={HomePage} />
         </Stack.Navigator>
-    )
+    );
 }
 
 const Drawer = createDrawerNavigator();
@@ -22,8 +22,7 @@ const Drawer = createDrawerNavigator();
 export default function App() {
     return (
         <NavigationContainer>
-            <Drawer.Navigator
-                initialRouteName="Home">
+            <Drawer.Navigator initialRouteName="Home">
                 <Drawer.Screen name="Home" component={HomeStack} />
                 <Drawer.Screen name="Details" component={DetailsPage} />
             </Drawer.Navigator>
