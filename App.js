@@ -1,12 +1,13 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-import { StyleSheet, Button, Text, View } from 'react-native';
+import { StyleSheet, Button, Text, View, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { color } from 'react-native-reanimated';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import {Ionicons} from "@expo/vector-icons";
 
 const Stack = createStackNavigator();
-
+const Drawer = createDrawerNavigator();
 
 function HomeScreen({ navigation }) {
   return (
@@ -32,6 +33,27 @@ function DetailsScreen({ navigation }) {
   );
 }
 
+function HomeStack({ navigation }) {
+  return (
+    <Stack.Navigator 
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: "#f4511e",
+        },
+        headerTintColor: '#fff',
+        headerTitleAlign: 'center',
+        headerLeft: () => (
+          <TouchableOpacity onPress={() => navigation.openDrawer() } >
+            <Ionicons name="md-menu" size={28} color="white" />
+          </TouchableOpacity>
+        )
+      }}
+    >
+      <Stack.Screen name="Home" component={HomeScreen} />
+    </Stack.Navigator>
+  )
+}
+
 export default function App() {
   return (
     <NavigationContainer>
@@ -39,17 +61,11 @@ export default function App() {
         <Text>Open up App.js to start working on your app!</Text>
         <StatusBar style="auto" />
       </View> */}
-      <Stack.Navigator
-        screenOptions={{
-          headerStyle: {
-            backgroundColor: "#f4511e",
-          },
-          headerTintColor: '#fff',
-          headerTitleAlign: 'center',
-        }}>
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Details" component={DetailsScreen} />
-      </Stack.Navigator>
+      <Drawer.Navigator
+        initialRouteName="Home">
+        <Drawer.Screen name="Home" component={HomeStack} />
+        <Drawer.Screen name="Details" component={DetailsScreen} />
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 }
