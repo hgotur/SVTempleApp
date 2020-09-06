@@ -1,9 +1,9 @@
 {
-  "name": "ExpoBare",
-  "displayName": "ExpoBare",
+  "name": "SVTempleMI",
+  "displayName": "SVTempleMI",
   "expo": {
-    "name": "ExpoBare",
-    "slug": "ExpoBare",
+    "name": "SVTempleMI",
+    "slug": "SVTempleMI",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"

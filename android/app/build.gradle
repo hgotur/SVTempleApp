@@ -131,7 +131,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.expobare"
+        applicationId "com.svtemplemi"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

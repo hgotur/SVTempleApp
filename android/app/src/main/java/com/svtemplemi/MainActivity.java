@@ -1,4 +1,4 @@
-package com.expobare;
+package com.svtemplemi;
 
 import android.os.Bundle;
 
