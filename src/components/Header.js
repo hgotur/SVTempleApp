@@ -2,12 +2,11 @@ import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from "@expo/vector-icons";
 
+import Colors from "../styles/colors";
+
 const MenuIcon = (props) => {
     return (
-        <TouchableOpacity
-            onPress={props.openDrawer}
-            style={styles.menu}
-        >
+        <TouchableOpacity onPress={props.openDrawer} style={styles.menu}>
             <Ionicons name="md-menu" size={28} color="white" />
         </TouchableOpacity>
     );
@@ -16,7 +15,7 @@ const MenuIcon = (props) => {
 const getScreenOptions = (navigation) => {
     return {
         headerStyle: {
-            backgroundColor: "#f4511e",
+            backgroundColor: Colors.Primary,
         },
         headerTintColor: '#fff',
         headerTitleAlign: 'center',
