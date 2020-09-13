@@ -14,6 +14,7 @@ import {
     ServicesPage,
 } from './src/pages';
 import Colors from './src/styles/colors';
+import Sidebar from './src/components/Sidebar';
 
 const HomeStack = createStackNavigator();
 
@@ -87,10 +88,11 @@ export default function App() {
             <Drawer.Navigator
                 initialRouteName="Home"
                 drawerStyle={{
-                    backgroundColor: Colors.Orange1,
+                    backgroundColor: Colors.Orange2,
                 }}
+                drawerContent={(props) => <Sidebar {...props} />}
                 drawerContentOptions={{
-                    activeBackgroundColor: Colors.Blue1,
+                    activeBackgroundColor: Colors.Orange1,
                     activeTintColor: '#fff',
                     inactiveTintColor: '#000',
                 }}>
