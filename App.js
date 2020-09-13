@@ -87,14 +87,12 @@ export default function App() {
         <NavigationContainer>
             <Drawer.Navigator
                 initialRouteName="Home"
-                drawerStyle={{
-                    backgroundColor: Colors.Orange2,
-                }}
                 drawerContent={(props) => <Sidebar {...props} />}
                 drawerContentOptions={{
                     activeBackgroundColor: Colors.Orange1,
                     activeTintColor: '#fff',
                     inactiveTintColor: '#000',
+                    backgroundColor: Colors.Orange2,
                 }}>
                 <Drawer.Screen name="Home" component={HomeScreen} />
                 <Drawer.Screen name="Events" component={EventsScreen} />
