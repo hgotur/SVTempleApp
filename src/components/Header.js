@@ -1,13 +1,13 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons } from '@expo/vector-icons';
 
-import Colors from "../styles/colors";
+import Colors from '../styles/colors';
 
 const MenuIcon = (props) => {
     return (
         <TouchableOpacity onPress={props.openDrawer} style={styles.menu}>
-            <Ionicons name="md-menu" size={28} color="white" />
+            <Ionicons name="md-menu" size={28} color="#000" />
         </TouchableOpacity>
     );
 };
@@ -15,14 +15,14 @@ const MenuIcon = (props) => {
 const getScreenOptions = (navigation) => {
     return {
         headerStyle: {
-            backgroundColor: Colors.Primary,
+            backgroundColor: Colors.Orange2,
         },
-        headerTintColor: '#fff',
+        headerTintColor: '#000',
         headerTitleAlign: 'center',
         headerLeft: () => (
             <MenuIcon openDrawer={() => navigation.openDrawer()} />
-        )
-    }
+        ),
+    };
 };
 
 const styles = StyleSheet.create({

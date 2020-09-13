@@ -13,6 +13,7 @@ import {
     EventsPage,
     ServicesPage,
 } from './src/pages';
+import Colors from './src/styles/colors';
 
 const HomeStack = createStackNavigator();
 
@@ -83,7 +84,16 @@ const Drawer = createDrawerNavigator();
 export default function App() {
     return (
         <NavigationContainer>
-            <Drawer.Navigator initialRouteName="Home">
+            <Drawer.Navigator
+                initialRouteName="Home"
+                drawerStyle={{
+                    backgroundColor: Colors.Orange1,
+                }}
+                drawerContentOptions={{
+                    activeBackgroundColor: Colors.Blue1,
+                    activeTintColor: '#fff',
+                    inactiveTintColor: '#000',
+                }}>
                 <Drawer.Screen name="Home" component={HomeScreen} />
                 <Drawer.Screen name="Events" component={EventsScreen} />
                 <Drawer.Screen name="Services" component={ServicesScreen} />
