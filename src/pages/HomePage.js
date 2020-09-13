@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text } from 'react-native';
+import { connect } from 'react-redux';
 
+import { getPagesMetadata } from '../redux/PageSlice';
 import globalStyles from '../styles/globalStyle';
 
-const HomePage = () => {
+const HomePage = (props) => {
+    useEffect(() => {
+        props.getPagesMetadata();
+    });
+
     return (
         <View style={globalStyles.body}>
             <Text>Home Screen</Text>
@@ -11,5 +17,8 @@ const HomePage = () => {
     );
 };
 
+const mapDispatchToProps = {
+    getPagesMetadata,
+};
 
-export default HomePage;
+export default connect(null, mapDispatchToProps)(HomePage);
