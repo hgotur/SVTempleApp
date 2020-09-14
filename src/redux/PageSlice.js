@@ -11,7 +11,7 @@ export const getPagesMetadata = createAsyncThunk(
 
 const initialState = {
     pagesMetadata: [],
-    pagesMetadataInitialzed: false,
+    pagesMetadataInitialized: false,
     pagesMetadataError: null,
     pages: {},
 };
@@ -21,14 +21,14 @@ const pageSlice = createSlice({
     initialState,
     extraReducers: {
         [getPagesMetadata.pending]: (state) => {
-            state.pagesMetadataInitialzed = false;
+            state.pagesMetadataInitialized = false;
         },
         [getPagesMetadata.fulfilled]: (state, action) => {
-            state.pagesMetadataInitialzed = true;
+            state.pagesMetadataInitialized = true;
             state.pagesMetadata = action.payload;
         },
         [getPagesMetadata.rejected]: (state, action) => {
-            state.pagesMetadataInitialzed = true;
+            state.pagesMetadataInitialized = true;
             state.pagesMetadataError = action.payload;
         },
     },

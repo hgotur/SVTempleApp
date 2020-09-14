@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-import Colors from '../styles/colors';
+import Colors from '../../styles/colors';
 
 const MenuIcon = (props) => {
     return (

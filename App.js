@@ -6,7 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import store from './src/redux/store';
-import { getScreenOptions } from './src/components/Header';
+import { getScreenOptions } from './src/components/Menu/Header';
 import {
     HomePage,
     AboutPage,
@@ -16,7 +16,7 @@ import {
     ServicesPage,
 } from './src/pages';
 import Colors from './src/styles/colors';
-import Sidebar from './src/components/Sidebar';
+import Sidebar from './src/components/Menu/Sidebar';
 
 const HomeStack = createStackNavigator();
 

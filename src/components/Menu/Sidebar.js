@@ -1,12 +1,11 @@
 import React from 'react';
-import { Image, StyleSheet } from 'react-native';
+import { Image, StyleSheet, TouchableOpacity } from 'react-native';
 import {
     DrawerContentScrollView,
     DrawerItemList,
 } from '@react-navigation/drawer';
 
-import Images from '../styles/images';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import Images from '../../styles/images';
 
 const Sidebar = (props) => {
     const onPressHeader = () => {
