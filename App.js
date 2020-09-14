@@ -1,9 +1,11 @@
 import 'react-native-gesture-handler';
 import React from 'react';
+import { Text } from 'react-native';
 import { Provider } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import Moment from 'react-moment';
 
 import store from './src/redux/store';
 import { getScreenOptions } from './src/components/Menu/Header';
@@ -17,6 +19,10 @@ import {
 } from './src/pages';
 import Colors from './src/styles/colors';
 import Sidebar from './src/components/Menu/Sidebar';
+
+// Moment default config
+Moment.globalFormat = 'ddd MMM D YYYY h:m A';
+Moment.globalElement = Text;
 
 const HomeStack = createStackNavigator();
 

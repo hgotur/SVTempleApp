@@ -1,17 +1,19 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { WebView } from 'react-native-webview';
+import Moment from 'react-moment';
+
+import Colors from '../styles/colors';
 
 const ArticleInfo = (props) => {
     const { title, excerpt, date } = props;
 
     return (
         <View style={styles.container}>
-            <Text>{title}</Text>
-            <Text>{date}</Text>
-            <View style={{flex: 1, backgroundColor: "blue", height: 100}} >
-                <WebView originWhitelist={['*']} source={{ html: excerpt }} style={{fontSize: 30}}/>
-
+            <Text style={styles.title}>{title}</Text>
+            <Moment>{date}</Moment>
+            <View style={styles.html}>
+                <WebView originWhitelist={['*']} source={{ html: excerpt }} />
             </View>
         </View>
     );
@@ -21,12 +23,16 @@ const styles = StyleSheet.create({
     container: {
         marginVertical: 20,
         padding: 5,
-        backgroundColor: "#eee",
         flex: 1,
     },
+    title: {
+        fontSize: 24,
+        color: Colors.Blue1,
+    },
     html: {
-        fontSize: 12,
-    }
+        flex: 1,
+        height: 100,
+    },
 });
 
 export default ArticleInfo;
