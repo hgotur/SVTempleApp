@@ -3,6 +3,7 @@ import ContactPage from './ContactPage';
 import DonationsPage from './DonationsPage';
 import EventsPage from './EventsPage';
 import HomePage from './HomePage';
+import ArticlePage from './ArticlePage';
 import ServicesPage from './ServicesPage';
 
 export {
@@ -11,5 +12,6 @@ export {
     DonationsPage,
     EventsPage,
     HomePage,
+    ArticlePage,
     ServicesPage,
 };

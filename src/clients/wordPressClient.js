@@ -11,7 +11,12 @@ class WordPressClient {
     }
 
     async getPagesMetadata() {
+        // TODO: HARSHA: filter the amount of info we get
         return this.get('pages');
+    }
+
+    async getPage(articleId) {
+        return this.get(`pages/${articleId}`);
     }
 }
 

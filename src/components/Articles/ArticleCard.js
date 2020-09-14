@@ -1,21 +1,21 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { WebView } from 'react-native-webview';
 import Moment from 'react-moment';
 
-import Colors from '../styles/colors';
+import Colors from '../../styles/colors';
 
-const ArticleInfo = (props) => {
-    const { title, excerpt, date } = props;
+const ArticleCard = (props) => {
+    const { title, excerpt, date, goToArticle } = props;
 
     return (
-        <View style={styles.container}>
+        <TouchableOpacity style={styles.container} onPress={goToArticle}>
             <Text style={styles.title}>{title}</Text>
             <Moment>{date}</Moment>
             <View style={styles.html}>
                 <WebView originWhitelist={['*']} source={{ html: excerpt }} />
             </View>
-        </View>
+        </TouchableOpacity>
     );
 };
 
@@ -35,4 +35,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default ArticleInfo;
+export default ArticleCard;

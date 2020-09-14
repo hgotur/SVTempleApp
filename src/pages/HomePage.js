@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
-import { View, Text, FlatList, ActivityIndicator } from 'react-native';
+import { View, FlatList, ActivityIndicator } from 'react-native';
 import { connect } from 'react-redux';
 
 import { getPagesMetadata } from '../redux/PageSlice';
 import globalStyles from '../styles/globalStyle';
-import ArticleInfo from '../components/ArticleInfo';
+import Loading from '../components/UI/Loading';
+import ArticleCard from '../components/Articles/ArticleCard';
 
 const HomePage = (props) => {
     const refreshArticles = () => {
@@ -17,28 +18,24 @@ const HomePage = (props) => {
 
     const { pagesMetadataInitialized, pagesMetadata } = props;
     if (!pagesMetadataInitialized) {
-        return (
-            <View style={globalStyles.body}>
-                <ActivityIndicator size="large" />
-            </View>
-        );
+        return <Loading />;
     }
 
     const renderArticle = ({ item }) => {
+        const goToArticle = () => {
+            props.navigation.push('Article', { articleId: item.id });
+        };
+
         return (
-            <ArticleInfo
+            <ArticleCard
                 title={item.title.rendered}
                 date={item.date}
                 excerpt={item.excerpt.rendered}
+                goToArticle={goToArticle}
             />
         );
     };
 
-    // return (
-    //     <View style={globalStyles.body}>
-    //         <Text>Home Screen</Text>
-    //     </View>
-    // );
     return (
         <View style={globalStyles.body}>
             <FlatList

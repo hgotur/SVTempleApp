@@ -11,6 +11,7 @@ import store from './src/redux/store';
 import { getScreenOptions } from './src/components/Menu/Header';
 import {
     HomePage,
+    ArticlePage,
     AboutPage,
     ContactPage,
     DonationsPage,
@@ -30,6 +31,7 @@ function HomeScreen({ navigation }) {
     return (
         <HomeStack.Navigator screenOptions={getScreenOptions(navigation)}>
             <HomeStack.Screen name="Home" component={HomePage} />
+            <HomeStack.Screen name="Article" component={ArticlePage} />
         </HomeStack.Navigator>
     );
 }

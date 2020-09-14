@@ -9,11 +9,19 @@ export const getPagesMetadata = createAsyncThunk(
     },
 );
 
+export const getPage = createAsyncThunk(
+    'getPage',
+    async (articleId) => {
+        return wordPressClient.getPage(articleId);
+    },
+);
+
 const initialState = {
     pagesMetadata: [],
     pagesMetadataInitialized: false,
     pagesMetadataError: null,
     pages: {},
+    pageError: null,
 };
 
 const pageSlice = createSlice({
@@ -22,6 +30,7 @@ const pageSlice = createSlice({
     extraReducers: {
         [getPagesMetadata.pending]: (state) => {
             state.pagesMetadataInitialized = false;
+            state.pagesMetadataError = null;
         },
         [getPagesMetadata.fulfilled]: (state, action) => {
             state.pagesMetadataInitialized = true;
@@ -30,6 +39,16 @@ const pageSlice = createSlice({
         [getPagesMetadata.rejected]: (state, action) => {
             state.pagesMetadataInitialized = true;
             state.pagesMetadataError = action.payload;
+        },
+        [getPage.pending]: (state) => {
+            state.pageError = null;
+        },
+        [getPage.fulfilled]: (state, action) => {
+            const { id } = action.payload;
+            state.pages[id] = action.payload;
+        },
+        [getPage.rejected]: (state, action) => {
+            state.pageError = action.payload;
         },
     },
 });
