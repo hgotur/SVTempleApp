@@ -5,7 +5,7 @@ import globalStyles from '../styles/globalStyle';
 
 const ContactPage = () => {
     return (
-        <View style={globalStyles.body}>
+        <View style={globalStyles.center}>
             <Text>Contact Screen</Text>
         </View>
     );

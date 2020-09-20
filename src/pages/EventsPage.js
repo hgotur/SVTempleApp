@@ -5,7 +5,7 @@ import globalStyles from '../styles/globalStyle';
 
 const EventsPage = () => {
     return (
-        <View style={globalStyles.body}>
+        <View style={globalStyles.center}>
             <Text>Events Screen</Text>
         </View>
     );

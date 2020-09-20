@@ -5,7 +5,7 @@ import globalStyles from '../styles/globalStyle';
 
 const DonationsPage = () => {
     return (
-        <View style={globalStyles.body}>
+        <View style={globalStyles.center}>
             <Text>Donations Screen</Text>
         </View>
     );
