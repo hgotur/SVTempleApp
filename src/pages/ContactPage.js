@@ -30,7 +30,7 @@ const ContactPage = () => {
                     <View style={globalStyles.textGroup}>
                         <LabelledText label="Phone:" textStyle={globalStyles.text}>(248) 449-9049</LabelledText>
                         <LabelledText label="Email:" textStyle={globalStyles.text}>eo@www.svtemplemi.org</LabelledText>
-                        <LabelledText label="Mailing Address:" textStyle={globalStyles.text}>26233 Taft Rd Novi, MI 48374</LabelledText>
+                        <LabelledText label="Mailing Address:" textStyle={globalStyles.text}>26233 Taft Rd{'\n'}Novi, MI 48374</LabelledText>
                     </View>
                 </CollapsibleGroup>
             </View>
