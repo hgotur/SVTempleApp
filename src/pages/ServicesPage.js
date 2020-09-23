@@ -167,7 +167,11 @@ const ServicesPage = () => {
                         title="Set Time"
                     />
                     {showDatePicker && (
-                        <DateTimePicker value={date} onChange={updateDate} />
+                        <DateTimePicker
+                            value={date}
+                            onChange={updateDate}
+                            minimumDate={new Date(Date.now())}
+                        />
                     )}
                     {showTimePicker && (
                         <DateTimePicker
