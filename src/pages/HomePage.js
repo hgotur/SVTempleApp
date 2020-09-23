@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View, FlatList, ActivityIndicator } from 'react-native';
+import { View, FlatList } from 'react-native';
 import { connect } from 'react-redux';
 
 import { getPagesMetadata } from '../redux/PageSlice';
