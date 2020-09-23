@@ -8,8 +8,8 @@ import CollapsibleGroup from '../components/UI/CollapsibleGroup';
 
 const AboutPage = () => {
     return (
-        <ScrollView style={globalStyles.textContainer}>
-            <View style={{ width: '95%' }}>
+        <ScrollView style={globalStyles.body}>
+            <View style={globalStyles.textContainer}>
                 <CollapsibleGroup
                     header="Sri Venkataswara Temple & Cultural Center"
                     headerStyle={globalStyles.title}

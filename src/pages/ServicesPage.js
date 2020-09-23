@@ -118,9 +118,16 @@ const ServicesPage = () => {
     };
 
     return (
-        <ScrollView style={globalStyles.textContainer}>
-            <View style={{ width: '95%' }}>
+        <ScrollView style={globalStyles.body}>
+            <View style={globalStyles.textContainer}>
                 <Text style={globalStyles.title}>Service Request Form</Text>
+                <Text style={[globalStyles.text, globalStyles.textGroup]}>
+                    Fill out this form to request a temple service. When you
+                    click "Submit", an email will be generated with the proper
+                    fields filled in. Send the email through your mail app to
+                    submit the request. A temple volunteer will follow up via
+                    email.
+                </Text>
                 <LabelledInput
                     style={globalStyles.textGroup}
                     label="Name"
@@ -144,7 +151,7 @@ const ServicesPage = () => {
                 />
                 <LabelledInput
                     style={globalStyles.textGroup}
-                    label="Date"
+                    label="Requested Date of Service"
                     value={formatDate(date)}
                     editable={false}
                 />
@@ -159,17 +166,17 @@ const ServicesPage = () => {
                         onPress={toggleTimePicker}
                         title="Set Time"
                     />
+                    {showDatePicker && (
+                        <DateTimePicker value={date} onChange={updateDate} />
+                    )}
+                    {showTimePicker && (
+                        <DateTimePicker
+                            value={date}
+                            onChange={updateTime}
+                            mode="time"
+                        />
+                    )}
                 </View>
-                {showDatePicker && (
-                    <DateTimePicker value={date} onChange={updateDate} />
-                )}
-                {showTimePicker && (
-                    <DateTimePicker
-                        value={date}
-                        onChange={updateTime}
-                        mode="time"
-                    />
-                )}
                 <LabelledPicker
                     style={globalStyles.textGroup}
                     label="Service"
@@ -179,8 +186,9 @@ const ServicesPage = () => {
                         <Picker.Item label={value} value={key} key={key} />
                     ))}
                 </LabelledPicker>
-                <Button onPress={onSubmit} title="Send Email" />
+                <Button onPress={onSubmit} title="Submit" />
             </View>
+
         </ScrollView>
     );
 };

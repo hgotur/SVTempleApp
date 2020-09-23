@@ -13,7 +13,7 @@ const globalStyles = StyleSheet.create({
         fontSize: 28,
         fontWeight: 'bold',
         color: '#000',
-        marginVertical: 10,
+        marginBottom: 10,
     },
     subHeader: {
         fontSize: 20,
@@ -27,6 +27,7 @@ const globalStyles = StyleSheet.create({
     textContainer: {
         padding: 20,
         height: '100%',
+        width: '95%',
     },
     textGroup: {
         marginBottom: 15,
