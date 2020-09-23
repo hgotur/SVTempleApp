@@ -10,6 +10,11 @@ import emailClient from '../clients/emailClient';
 import { sub } from 'react-native-reanimated';
 
 const TEMPLE_EMAIL = 'eo@www.svtemplemi.org';
+const SERVICES_MAP = {
+    first: 'First',
+    second: 'Second',
+    third: 'Third',
+};
 
 const ServicesPage = () => {
     const [name, setName] = useState('');
@@ -45,13 +50,70 @@ const ServicesPage = () => {
         setDate(newDate);
     };
 
+    const formatDate = (date) => {
+        return date.toLocaleString('en-US', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+        });
+    };
+
     const toggleDatePicker = () => setShowDatePicker(!showDatePicker);
     const toggleTimePicker = () => setShowTimePicker(!showTimePicker);
 
     const onSubmit = async () => {
         const to = TEMPLE_EMAIL;
-        const subject = `Requested Service: ${service}`;
-        const body = 'Test';
+        const subject = `Requested Service: ${SERVICES_MAP[service]}`;
+        const body = `
+<!DOCTYPE html PUBLIC “-//W3C//DTD XHTML 1.0 Transitional//EN”
+        “https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd”>
+<html xmlns=“https://www.w3.org/1999/xhtml”>
+
+<head>
+    <title>Test Email Sample</title>
+    <meta http–equiv=“Content-Type” content=“text/html; charset=UTF-8” />
+    <meta http–equiv=“X-UA-Compatible” content=“IE=edge” />
+    <meta name=“viewport” content=“width=device-width, initial-scale=1.0 “ />
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 5px;
+            text-align: left;
+        }
+        </style>
+</head>
+
+<body>
+    <table style="width:95%">
+        <tr>
+            <th>Name</th>
+            <td>${name}</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>${email}</td>
+        </tr>
+        <tr>
+            <th>Phone Number</th>
+            <td>${phoneNumber}</td>
+        </tr>
+        <tr>
+            <th>Date Requested</th>
+            <td>${formatDate(date)}</td>
+        </tr>
+        <tr>
+            <th>Service Requested</th>
+            <td>${SERVICES_MAP[service]}</td>
+        </tr>
+    </table>
+</body>
+`;
         await emailClient.sendEmail(to, subject, body);
     };
 
@@ -83,14 +145,7 @@ const ServicesPage = () => {
                 <LabelledInput
                     style={globalStyles.textGroup}
                     label="Date"
-                    value={date.toLocaleString('en-US', {
-                        weekday: 'long',
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                        hour: '2-digit',
-                        minute: '2-digit',
-                    })}
+                    value={formatDate(date)}
                     editable={false}
                 />
                 <View style={[styles.buttonContainer, globalStyles.textGroup]}>
@@ -120,10 +175,11 @@ const ServicesPage = () => {
                     label="Service"
                     selectedValue={service}
                     onValueChange={setService}>
-                    <Picker.Item label="First" value="first" />
-                    <Picker.Item label="Second" value="second" />
+                    {Object.entries(SERVICES_MAP).map(([key, value]) => (
+                        <Picker.Item label={value} value={key} key={key} />
+                    ))}
                 </LabelledPicker>
-                <Button onPress={onSubmit} title="Submit" />
+                <Button onPress={onSubmit} title="Send Email" />
             </View>
         </ScrollView>
     );
