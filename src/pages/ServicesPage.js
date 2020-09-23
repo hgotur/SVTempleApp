@@ -123,10 +123,10 @@ const ServicesPage = () => {
                 <Text style={globalStyles.title}>Service Request Form</Text>
                 <Text style={[globalStyles.text, globalStyles.textGroup]}>
                     Fill out this form to request a temple service. When you
-                    click "Submit", an email will be generated with the proper
-                    fields filled in. Send the email through your mail app to
-                    submit the request. A temple volunteer will follow up via
-                    email.
+                    click "Submit", you will be redirected to your mail app with
+                    a pre-populated email containing information from this form.
+                    Send the email to submit the request. A temple volunteer
+                    will follow up with you via email.
                 </Text>
                 <LabelledInput
                     style={globalStyles.textGroup}
