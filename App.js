@@ -14,7 +14,6 @@ import {
     ArticlePage,
     AboutPage,
     ContactPage,
-    DonationsPage,
     EventsPage,
     ServicesPage,
 } from './src/pages';
@@ -63,20 +62,6 @@ function ContactScreen({ navigation }) {
         <ContactStack.Navigator screenOptions={getScreenOptions(navigation)}>
             <ContactStack.Screen name="Contact" component={ContactPage} />
         </ContactStack.Navigator>
-    );
-}
-
-const DonationsStack = createStackNavigator();
-
-function DonationsScreen({ navigation }) {
-    return (
-        <DonationsStack.Navigator screenOptions={getScreenOptions(navigation)}>
-            <DonationsStack.Screen
-                name="Donations"
-                component={DonationsPage}
-                options={{ title: 'Donations & Membership' }}
-            />
-        </DonationsStack.Navigator>
     );
 }
 
