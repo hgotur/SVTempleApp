@@ -7,14 +7,28 @@ import globalStyles from '../styles/globalStyle';
 import LabelledInput from '../components/UI/LabelledInput';
 import LabelledPicker from '../components/UI/LabelledPicker';
 import emailClient from '../clients/emailClient';
-import { sub } from 'react-native-reanimated';
+    import Colors from '../styles/colors';
 
 const TEMPLE_EMAIL = 'eo@www.svtemplemi.org';
-const SERVICES_MAP = {
-    first: 'First',
-    second: 'Second',
-    third: 'Third',
-};
+const SERVICES = [
+    'Akshrabyasam',
+    'Annaprasana',
+    'Ayushhomam',
+    'Bumi Pooja',
+    'Half Saree',
+    'Jananasanthi Homam',
+    'Lakshmi Naraya Pooja',
+    'Namakranam',
+    'Navagraha Shanthi',
+    'Satyanarayanam Vratham',
+    'Seemantham',
+    'Shasti Poorthi',
+    'Shrardham',
+    'Tharpanam',
+    'Upanayanam',
+    'Vadamal',
+    'Wedding',
+];
 
 const ServicesPage = () => {
     const [name, setName] = useState('');
@@ -22,6 +36,7 @@ const ServicesPage = () => {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [date, setDate] = useState(new Date(Date.now()));
     const [service, setService] = useState('');
+    const [error, setError] = useState(null);
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [showTimePicker, setShowTimePicker] = useState(false);
 
@@ -65,8 +80,18 @@ const ServicesPage = () => {
     const toggleTimePicker = () => setShowTimePicker(!showTimePicker);
 
     const onSubmit = async () => {
+        setError(null);
+        if (name.trim() === '') {
+            setError('Name cannot be empty.');
+            return;
+        }
+        if (email.trim() === '') {
+            setError('Email cannot be empty.');
+            return;
+        }
+
         const to = TEMPLE_EMAIL;
-        const subject = `Requested Service: ${SERVICES_MAP[service]}`;
+        const subject = `Requested Service: ${service}`;
         const body = `
 <!DOCTYPE html PUBLIC “-//W3C//DTD XHTML 1.0 Transitional//EN”
         “https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd”>
@@ -109,7 +134,7 @@ const ServicesPage = () => {
         </tr>
         <tr>
             <th>Service Requested</th>
-            <td>${SERVICES_MAP[service]}</td>
+            <td>${service}</td>
         </tr>
     </table>
 </body>
@@ -183,16 +208,16 @@ const ServicesPage = () => {
                 </View>
                 <LabelledPicker
                     style={globalStyles.textGroup}
-                    label="Service"
+                    label="Requested Service"
                     selectedValue={service}
                     onValueChange={setService}>
-                    {Object.entries(SERVICES_MAP).map(([key, value]) => (
-                        <Picker.Item label={value} value={key} key={key} />
+                    {SERVICES.map((value) => (
+                        <Picker.Item label={value} value={value} key={value} />
                     ))}
                 </LabelledPicker>
+                <Text style={[globalStyles.text, styles.error]}>{error}</Text>
                 <Button onPress={onSubmit} title="Submit" />
             </View>
-
         </ScrollView>
     );
 };
@@ -205,6 +230,9 @@ const styles = StyleSheet.create({
     },
     button: {
         width: 250,
+    },
+    error: {
+        color: Colors.ErrorRed,
     },
 });
 
