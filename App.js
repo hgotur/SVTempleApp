@@ -91,6 +91,7 @@ export default function App() {
                         backgroundColor: Colors.Orange2,
                     }}>
                     <Drawer.Screen name="Home" component={HomeScreen} />
+                    <Drawer.Screen name="Events" component={EventsScreen} />
                     <Drawer.Screen name="Services" component={ServicesScreen} />
                     <Drawer.Screen name="Contact" component={ContactScreen} />
                     <Drawer.Screen name="About" component={AboutScreen} />
