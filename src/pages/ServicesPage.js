@@ -3,11 +3,11 @@ import { View, ScrollView, StyleSheet, Text, Button } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Picker } from '@react-native-community/picker';
 
-import globalStyles from '../styles/globalStyle';
-import LabelledInput from '../components/UI/LabelledInput';
-import LabelledPicker from '../components/UI/LabelledPicker';
-import emailClient from '../clients/emailClient';
-    import Colors from '../styles/colors';
+import globalStyles from '~/src/styles/globalStyle';
+import LabelledInput from '~/src/components/UI/LabelledInput';
+import LabelledPicker from '~/src/components/UI/LabelledPicker';
+import emailClient from '~/src/clients/emailClient';
+import Colors from '~/src/styles/colors';
 
 const TEMPLE_EMAIL = 'eo@www.svtemplemi.org';
 const SERVICES = [

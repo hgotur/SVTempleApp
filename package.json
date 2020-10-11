@@ -41,6 +41,7 @@
   "devDependencies": {
     "@babel/core": "~7.9.0",
     "babel-jest": "~25.2.6",
+    "babel-plugin-root-import": "^6.5.0",
     "jest": "~25.2.6",
     "react-test-renderer": "~16.11.0"
   },
