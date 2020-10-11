@@ -4,6 +4,11 @@ const globalStyles = StyleSheet.create({
     body: {
         flex: 1,
     },
+    boldText: {
+        fontSize: 16,
+        color: '#000',
+        fontWeight: 'bold',
+    },
     center: {
         flex: 1,
         alignItems: 'center',
