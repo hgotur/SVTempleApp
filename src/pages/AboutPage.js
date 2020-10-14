@@ -12,8 +12,7 @@ const AboutPage = () => {
             <View style={globalStyles.textContainer}>
                 <CollapsibleGroup
                     header="Sri Venkataswara Temple & Cultural Center"
-                    headerStyle={globalStyles.title}
-                    collapsed={false}>
+                    headerStyle={globalStyles.title}>
                     <View style={globalStyles.textGroup}>
                         <Text style={globalStyles.subHeader}>Vision</Text>
                         <Text style={globalStyles.text}>
@@ -98,7 +97,8 @@ const AboutPage = () => {
 
                 <CollapsibleGroup
                     header="Board of Trustees"
-                    headerStyle={globalStyles.title}>
+                    headerStyle={globalStyles.title}
+                    collapsed={true}>
                     <View style={globalStyles.textGroup}>
                         <Text style={globalStyles.subHeader}>
                             Permanent Trustees
@@ -165,13 +165,14 @@ const AboutPage = () => {
                 </CollapsibleGroup>
                 <CollapsibleGroup
                     header="Executive Committee"
-                    headerStyle={globalStyles.title}>
+                    headerStyle={globalStyles.title}
+                    collapsed={true}>
                     <LabelledText
                         label="Chairman:"
                         labelWidth={150}
-                        textStyle={globalStyles.text}>
-                        Venkat Talasila
-                    </LabelledText>
+                            textStyle={globalStyles.text}>
+                            Venkat Talasila
+                        </LabelledText>
                     <LabelledText
                         label="Vice-Chairman:"
                         labelWidth={150}

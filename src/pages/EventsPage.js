@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { View, Text, ScrollView, RefreshControl } from 'react-native';
 import { connect } from 'react-redux';
 import dayjs from 'dayjs';
 
@@ -10,8 +10,12 @@ import BulletItem from '~/src/components/UI/BulletItem';
 import CollapsibleGroup from '../components/UI/CollapsibleGroup';
 
 const EventsPage = (props) => {
-    useEffect(() => {
+    const refreshEvents = () => {
         props.getEventsPage();
+    };
+
+    useEffect(() => {
+        refreshEvents();
     }, []);
 
     const { events, eventsInitialized } = props;
@@ -29,7 +33,11 @@ const EventsPage = (props) => {
         .sort((day1, day2) => (dayjs(day1).isBefore(dayjs(day2)) ? 1 : -1));
 
     return (
-        <ScrollView style={globalStyles.body}>
+        <ScrollView
+            style={globalStyles.body}
+            refreshControl={
+                <RefreshControl refreshing={false} onRefresh={refreshEvents} />
+            }>
             <View style={globalStyles.textContainer}>
                 <CollapsibleGroup
                     header="Upcoming Events"

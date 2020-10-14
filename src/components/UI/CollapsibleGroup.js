@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, Image } from 'react-native';
 import Images from '../../styles/images';
 
-const DEFAULT_COLLAPSED = true;
+const DEFAULT_COLLAPSED = false;
 
 const CollapsibleGroup = (props) => {
     const { children, header, headerStyle, collapsed } = props;

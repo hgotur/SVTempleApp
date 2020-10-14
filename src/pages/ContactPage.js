@@ -15,7 +15,7 @@ const ContactPage = () => {
                 resizeMode="contain"
             />
             <View style={globalStyles.textContainer}>
-                <CollapsibleGroup header={"Hours of Operation"} headerStyle={globalStyles.title} collapsed={false}>
+                <CollapsibleGroup header={"Hours of Operation"} headerStyle={globalStyles.title}>
                     <View style={globalStyles.textGroup}>
                         <Text style={globalStyles.text}><Text style={{ fontWeight: 'bold' }}>Mon - Fri:</Text> 9am - 12pm & 5:30pm - 8:30pm</Text>
                         <Text style={globalStyles.text}><Text style={{ fontWeight: 'bold' }}>Sat, Sun & All Public Holidays:</Text> 9am - 8:30pm</Text>
