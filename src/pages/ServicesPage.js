@@ -6,7 +6,7 @@ import { Picker } from '@react-native-community/picker';
 import globalStyles from '~/src/styles/globalStyle';
 import LabelledInput from '~/src/components/UI/LabelledInput';
 import LabelledPicker from '~/src/components/UI/LabelledPicker';
-import emailClient from '~/src/clients/emailClient';
+import emailClient from '~/src/clients/EmailClient';
 import Colors from '~/src/styles/colors';
 
 const TEMPLE_EMAIL = 'eo@www.svtemplemi.org';

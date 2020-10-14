@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-import wordPressClient from '../clients/wordPressClient';
+import wordPressClient from '../clients/WordPressClient';
 import {
     getEventsFromHTML,
     getHomePageHeadlinesFromHTML,

@@ -12,12 +12,12 @@ import globalStyles from '../styles/globalStyle';
 import Images from '../styles/images';
 import CollapsibleGroup from '../components/UI/CollapsibleGroup';
 import LabelledText from '../components/UI/LabelledText';
-import { openMap } from '~/src/clients/MapClient';
+import mapClient from '~/src/clients/MapClient';
 
 const ContactPage = () => {
     return (
         <ScrollView style={globalStyles.body}>
-            <TouchableOpacity onPress={openMap}>
+            <TouchableOpacity onPress={mapClient.openMap}>
                 <Image
                     style={styles.image}
                     source={Images.mapLocation}
