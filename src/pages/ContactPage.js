@@ -1,19 +1,29 @@
 import React from 'react';
-import { View, Image, StyleSheet, Text, ScrollView } from 'react-native';
+import {
+    View,
+    Image,
+    StyleSheet,
+    Text,
+    ScrollView,
+    TouchableOpacity,
+} from 'react-native';
 
 import globalStyles from '../styles/globalStyle';
 import Images from '../styles/images';
 import CollapsibleGroup from '../components/UI/CollapsibleGroup';
 import LabelledText from '../components/UI/LabelledText';
+import { openMap } from '~/src/clients/MapClient';
 
 const ContactPage = () => {
     return (
         <ScrollView style={globalStyles.body}>
-            <Image
-                style={styles.image}
-                source={Images.mapLocation}
-                resizeMode="contain"
-            />
+            <TouchableOpacity onPress={openMap}>
+                <Image
+                    style={styles.image}
+                    source={Images.mapLocation}
+                    resizeMode="contain"
+                />
+            </TouchableOpacity>
             <View style={globalStyles.textContainer}>
                 <CollapsibleGroup header={"Hours of Operation"} headerStyle={globalStyles.title}>
                     <View style={globalStyles.textGroup}>
