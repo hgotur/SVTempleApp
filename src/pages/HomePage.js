@@ -1,58 +1,57 @@
 import React, { useEffect } from 'react';
-import { View, FlatList } from 'react-native';
+import { View, FlatList, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 
-import { getPagesMetadata } from '../redux/PageSlice';
+import { getHomePage } from '../redux/PageSlice';
 import globalStyles from '../styles/globalStyle';
 import Loading from '../components/UI/Loading';
-import ArticleCard from '../components/Articles/ArticleCard';
+import Headline from '~/src/components/Home/Headline';
 
 const HomePage = (props) => {
-    const refreshArticles = () => {
-        props.getPagesMetadata();
+    const refreshHomePage = () => {
+        props.getHomePage();
+    };
+
+    const renderHeadline = ({ item }) => {
+        const [headline, imgSrc] = item;
+        return <Headline headline={headline} imgSrc={imgSrc} />;
     };
 
     useEffect(() => {
-        refreshArticles();
+        refreshHomePage();
     }, []);
 
-    const { pagesMetadataInitialized, pagesMetadata } = props;
-    if (!pagesMetadataInitialized) {
+    const { homePageHeadlines, homePageInitialized } = props;
+
+    if (!homePageInitialized) {
         return <Loading />;
     }
-
-    const renderArticle = ({ item }) => {
-        const goToArticle = () => {
-            props.navigation.push('Article', { articleId: item.id });
-        };
-
-        return (
-            <ArticleCard
-                title={item.title.rendered}
-                date={item.date}
-                excerpt={item.excerpt.rendered}
-                goToArticle={goToArticle}
-            />
-        );
-    };
 
     return (
         <View style={globalStyles.body}>
             <FlatList
-                refreshing={!pagesMetadataInitialized}
-                onRefresh={refreshArticles}
-                data={pagesMetadata}
-                keyExtractor={(article) => article.id.toString()}
-                renderItem={renderArticle}
+                refreshing={!homePageInitialized}
+                onRefresh={refreshHomePage}
+                data={homePageHeadlines}
+                keyExtractor={([headline, _]) => headline}
+                renderItem={renderHeadline}
+                contentContainerStyle={styles.contentContainer}
             />
         </View>
     );
 };
 
+const styles = StyleSheet.create({
+    contentContainer: {
+        alignItems: 'center',
+        width: '100%',
+    },
+});
+
 const mapStateToProps = (state) => state.pages;
 
 const mapDispatchToProps = {
-    getPagesMetadata,
+    getHomePage,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

@@ -1,8 +1,12 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 import wordPressClient from '../clients/wordPressClient';
-import { getEventsFromHTML } from '~/src/utils/EventUtils';
+import {
+    getEventsFromHTML,
+    getHomePageHeadlinesFromHTML,
+} from '~/src/utils/HTMLUtils';
 
+const HOME_PAGE_ID = 6;
 const EVENT_PAGE_ID = 859;
 
 export const getPagesMetadata = createAsyncThunk(
@@ -12,18 +16,24 @@ export const getPagesMetadata = createAsyncThunk(
     },
 );
 
-export const getPage = createAsyncThunk('getPage', async (articleId) => {
-    return wordPressClient.getPage(articleId);
+export const getPage = createAsyncThunk('getPage', async (pageId) => {
+    return wordPressClient.getPage(pageId);
 });
 
 export const getEventsPage = createAsyncThunk('getEventsPage', async () => {
     return wordPressClient.getPage(EVENT_PAGE_ID);
 });
 
+export const getHomePage = createAsyncThunk('getHomePage', async () => {
+    return wordPressClient.getPage(HOME_PAGE_ID);
+});
+
 const initialState = {
     events: [],
     eventsInitialized: false,
     eventsError: null,
+    homePageInitialized: false,
+    homePageHeadlines: [],
     pagesMetadata: [],
     pagesMetadataInitialized: false,
     pagesMetadataError: null,
@@ -68,6 +78,21 @@ const pageSlice = createSlice({
         [getEventsPage.rejected]: (state, action) => {
             state.eventsInitialized = true;
             state.eventsError = action.payload;
+        },
+        [getHomePage.pending]: (state) => {
+            state.homePageInitialized = false;
+            state.homePageError = false;
+        },
+        [getHomePage.fulfilled]: (state, action) => {
+            state.homePageInitialized = true;
+            state.homePageHeadlines = getHomePageHeadlinesFromHTML(
+                action.payload.content.rendered,
+            );
+            state.homePageError = false;
+        },
+        [getHomePage.rejected]: (state, action) => {
+            state.homePageInitialized = true;
+            state.homePageError = action.payload;
         },
     },
 });
