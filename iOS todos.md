@@ -8,3 +8,9 @@ React Navigation:
 
 React Native Webview:
 - `pod install` (https://github.com/react-native-community/react-native-webview/blob/HEAD/docs/Getting-Started.md)
+
+React Native Video:
+    pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
+    +  `pod 'react-native-video', :path => '../node_modules/react-native-video/react-native-video.podspec'`
+    end
+- https://www.npmjs.com/package/react-native-video#ios-installation
