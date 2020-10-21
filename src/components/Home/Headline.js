@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { TouchableOpacity, Text, Image, StyleSheet } from 'react-native';
+import Colors from '~/src/styles/colors';
 
 const Headline = (props) => {
     const [collapsed, setCollapsed] = useState(false);
@@ -30,15 +31,18 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderTopWidth: 1,
+        borderBottomWidth: 1,
+        paddingVertical: 10,
     },
     headline: {
         fontSize: 20,
         fontWeight: 'bold',
-        color: '#000',
+        color: Colors.Black,
         textAlign: 'center',
-        margin: 5,
+        width: 360,
     },
     image: {
+        marginTop: 10,
         width: 360,
         height: 460,
     },

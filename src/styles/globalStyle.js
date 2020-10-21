@@ -1,12 +1,14 @@
 import { StyleSheet } from 'react-native';
 
+import Colors from '~/src/styles/colors';
+
 const globalStyles = StyleSheet.create({
     body: {
         flex: 1,
     },
     boldText: {
         fontSize: 16,
-        color: '#000',
+        color: Colors.Black,
         fontWeight: 'bold',
     },
     center: {
@@ -17,17 +19,17 @@ const globalStyles = StyleSheet.create({
     title: {
         fontSize: 28,
         fontWeight: 'bold',
-        color: '#000',
+        color: Colors.Black,
         marginBottom: 10,
     },
     subHeader: {
         fontSize: 20,
         fontWeight: 'bold',
-        color: '#000',
+        color: Colors.Black,
     },
     text: {
         fontSize: 16,
-        color: '#000',
+        color: Colors.Black,
     },
     textContainer: {
         padding: 20,

@@ -86,8 +86,8 @@ export default function App() {
                     drawerContent={(props) => <Sidebar {...props} />}
                     drawerContentOptions={{
                         activeBackgroundColor: Colors.Orange1,
-                        activeTintColor: '#fff',
-                        inactiveTintColor: '#000',
+                        activeTintColor: Colors.White,
+                        inactiveTintColor: Colors.Black,
                         backgroundColor: Colors.Orange2,
                     }}>
                     <Drawer.Screen name="Home" component={HomeScreen} />

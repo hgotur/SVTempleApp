@@ -7,7 +7,8 @@ import { getEventsPage } from '~/src/redux/PageSlice';
 import globalStyles from '~/src/styles/globalStyle';
 import Loading from '~/src/components/UI/Loading';
 import BulletItem from '~/src/components/UI/BulletItem';
-import CollapsibleGroup from '../components/UI/CollapsibleGroup';
+import Colors from '~/src/styles/colors';
+import CollapsibleGroup from '~/src/components/UI/CollapsibleGroup';
 
 const EventsPage = (props) => {
     const refreshEvents = () => {
@@ -53,7 +54,7 @@ const EventsPage = (props) => {
                                     key={`${day} ${event}`}
                                     textStyle={[
                                         globalStyles.text,
-                                        { color: '#333' },
+                                        { color: Colors.DarkGray },
                                     ]}>
                                     {event}
                                 </BulletItem>
@@ -75,7 +76,7 @@ const EventsPage = (props) => {
                                     key={`${day} ${event}`}
                                     textStyle={[
                                         globalStyles.text,
-                                        { color: '#333' },
+                                        { color: Colors.DarkGray },
                                     ]}>
                                     {event}
                                 </BulletItem>

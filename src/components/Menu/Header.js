@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-import Colors from '../../styles/colors';
+import Colors from '~/src/styles/colors';
 
 const MenuIcon = (props) => {
     return (
@@ -17,7 +17,7 @@ const getScreenOptions = (navigation) => {
         headerStyle: {
             backgroundColor: Colors.Orange2,
         },
-        headerTintColor: '#000',
+        headerTintColor: Colors.Black,
         headerTitleAlign: 'center',
         headerLeft: () => (
             <MenuIcon openDrawer={() => navigation.openDrawer()} />

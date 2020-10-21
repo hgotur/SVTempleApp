@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, StyleSheet, Text, TextInput } from 'react-native';
 
+import Colors from '~/src/styles/colors';
+
 const LabelledInput = (props) => {
     const { label, style } = props;
     return (
@@ -17,15 +19,15 @@ const LabelledInput = (props) => {
 
 const styles = StyleSheet.create({
     input: {
-        borderColor: '#000',
+        borderColor: Colors.Black,
         borderWidth: 1,
         fontSize: 16,
-        color: '#000',
+        color: Colors.Black,
     },
     boldText: {
         fontSize: 16,
         fontWeight: 'bold',
-        color: '#000',
+        color: Colors.Black,
     },
 });
 
