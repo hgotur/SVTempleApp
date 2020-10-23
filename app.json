@@ -16,8 +16,15 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "android": {
+      "permissions": [],
+      "package": "org.svtemplemi.svtempleapp",
+      "versionCode": 1
+    },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "org.svtemplemi.svtempleapp",
+      "buildNumber": "1.0.0"
     },
     "web": {
       "favicon": "./assets/favicon.png"
