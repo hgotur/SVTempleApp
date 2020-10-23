@@ -35,7 +35,9 @@ const ServicesPage = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
-    const [date, setDate] = useState(dayjs().add(1, 'day').startOf('hour'));
+    const [date, setDate] = useState(
+        new Date(dayjs().add(1, 'day').startOf('hour').toISOString()),
+    );
     const [service, setService] = useState('');
     const [error, setError] = useState(null);
 
@@ -100,8 +102,8 @@ Service: ${service}
         await emailClient.sendEmail(to, subject, body);
     };
 
-    const now = dayjs();
-    const oneYear = dayjs().add(1, 'year');
+    const now = Date.now();
+    const oneYear = new Date(dayjs().add(1, 'year').toISOString());
 
     return (
         <ScrollView style={globalStyles.body}>
