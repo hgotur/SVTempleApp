@@ -4,6 +4,7 @@ import EventsPage from './EventsPage';
 import HomePage from './HomePage';
 import ArticlePage from './ArticlePage';
 import ServicesPage from './ServicesPage';
+import SettingsPage from './SettingsPage';
 
 export {
     AboutPage,
@@ -12,4 +13,5 @@ export {
     HomePage,
     ArticlePage,
     ServicesPage,
+    SettingsPage,
 };

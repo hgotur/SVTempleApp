@@ -15,6 +15,7 @@ import {
     ContactPage,
     EventsPage,
     ServicesPage,
+    SettingsPage,
 } from './src/pages';
 import Colors from './src/styles/colors';
 import Sidebar from './src/components/Menu/Sidebar';
@@ -73,6 +74,16 @@ function AboutScreen({ navigation }) {
     );
 }
 
+const SettingsStack = createStackNavigator();
+
+function SettingsScreen({ navigation }) {
+    return (
+        <SettingsStack.Navigator screenOptions={getScreenOptions(navigation)}>
+            <SettingsStack.Screen name="Settings" component={SettingsPage} />
+        </SettingsStack.Navigator>
+    );
+}
+
 const Drawer = createDrawerNavigator();
 
 export default function App() {
@@ -93,6 +104,7 @@ export default function App() {
                     <Drawer.Screen name="Services" component={ServicesScreen} />
                     <Drawer.Screen name="Contact" component={ContactScreen} />
                     <Drawer.Screen name="About" component={AboutScreen} />
+                    <Drawer.Screen name="Settings" component={SettingsScreen} />
                 </Drawer.Navigator>
             </NavigationContainer>
         </Provider>
