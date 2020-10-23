@@ -35,8 +35,8 @@ const EventsPage = (props) => {
 
     return (
         <ScrollView
-            style={globalStyles.body}
-            refreshControl={
+        style={globalStyles.body}
+        refreshControl={
                 <RefreshControl refreshing={false} onRefresh={refreshEvents} />
             }>
             <View style={globalStyles.textContainer}>

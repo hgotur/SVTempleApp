@@ -17,9 +17,8 @@ const AboutPage = () => {
                         <Text style={globalStyles.subHeader}>Vision</Text>
                         <Text style={globalStyles.text}>
                             To maintain a traditional Sri Venkateswara temple
-                            and develop a and develop a develop a develop a
-                            cultural center to serve as spiritual and cultural
-                            anchor for Hindu community.
+                            and develop a cultural center to serve as spiritual
+                            and cultural anchor for the Hindu community.
                         </Text>
                     </View>
                     <View style={globalStyles.textGroup}>

@@ -1,6 +1,10 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
 import Colors from './colors';
+
+export const getMaxContainerWidth = () => {
+    return Dimensions.get('window').width > 700 ? '70%' : '95%';
+};
 
 const globalStyles = StyleSheet.create({
     body: {
@@ -10,6 +14,7 @@ const globalStyles = StyleSheet.create({
         fontSize: 16,
         color: Colors.Black,
         fontWeight: 'bold',
+        flexWrap: 'wrap',
     },
     center: {
         flex: 1,
@@ -29,12 +34,14 @@ const globalStyles = StyleSheet.create({
     },
     text: {
         fontSize: 16,
+        flexWrap: 'wrap',
         color: Colors.Black,
     },
     textContainer: {
-        padding: 20,
+        padding: 10,
         height: '100%',
-        width: '95%',
+        alignSelf: 'center',
+        width: getMaxContainerWidth(),
     },
     textGroup: {
         marginBottom: 15,

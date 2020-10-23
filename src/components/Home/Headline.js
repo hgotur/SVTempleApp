@@ -26,7 +26,6 @@ export default Headline;
 
 const styles = StyleSheet.create({
     item: {
-        width: '95%',
         marginVertical: 10,
         alignItems: 'center',
         justifyContent: 'center',
