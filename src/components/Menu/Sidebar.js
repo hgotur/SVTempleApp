@@ -6,6 +6,7 @@ import {
 } from '@react-navigation/drawer';
 
 import Images from '../../styles/images';
+import Colors from '../../styles/colors';
 
 const Sidebar = (props) => {
     const onPressHeader = () => {
@@ -13,7 +14,9 @@ const Sidebar = (props) => {
     };
     return (
         <DrawerContentScrollView {...props}>
-            <TouchableOpacity onPress={onPressHeader}>
+            <TouchableOpacity
+                onPress={onPressHeader}
+                style={styles.imageContainer}>
                 <Image
                     source={Images.logo}
                     resizeMode="contain"
@@ -29,7 +32,12 @@ const Sidebar = (props) => {
 const styles = StyleSheet.create({
     image: {
         width: '100%',
-        height: 120,
+        height: 160,
+    },
+    imageContainer: {
+        margin: 10,
+        backgroundColor: Colors.Orange1,
+        borderRadius: 10,
     },
 });
 
