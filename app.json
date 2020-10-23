@@ -4,11 +4,11 @@
     "slug": "svtemple-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/app-icon.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/SVTCC_Logo.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#fe9306"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
