@@ -1,6 +1,8 @@
 import { parse } from 'node-html-parser';
 import { AllHtmlEntities } from 'html-entities';
 import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
+dayjs.extend(customParseFormat);
 
 const entities = new AllHtmlEntities();
 

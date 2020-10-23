@@ -12,7 +12,7 @@ import globalStyles from '../styles/globalStyle';
 import Images from '../styles/images';
 import CollapsibleGroup from '../components/UI/CollapsibleGroup';
 import LabelledText from '../components/UI/LabelledText';
-import mapClient from '~/src/clients/MapClient';
+import mapClient from '../clients/MapClient';
 
 const ContactPage = () => {
     return (

@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import { Picker } from '@react-native-community/picker';
 
-import Colors from '~/src/styles/colors';
+import Colors from '../../styles/colors';
 
 const LabelledPicker = (props) => {
     const { label, style, children, ...rest } = props;

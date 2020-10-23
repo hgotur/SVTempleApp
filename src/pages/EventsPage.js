@@ -3,12 +3,12 @@ import { View, Text, ScrollView, RefreshControl } from 'react-native';
 import { connect } from 'react-redux';
 import dayjs from 'dayjs';
 
-import { getEventsPage } from '~/src/redux/PageSlice';
-import globalStyles from '~/src/styles/globalStyle';
-import Loading from '~/src/components/UI/Loading';
-import BulletItem from '~/src/components/UI/BulletItem';
-import Colors from '~/src/styles/colors';
-import CollapsibleGroup from '~/src/components/UI/CollapsibleGroup';
+import { getEventsPage } from '../redux/PageSlice';
+import globalStyles from '../styles/globalStyle';
+import Loading from '../components/UI/Loading';
+import BulletItem from '../components/UI/BulletItem';
+import Colors from '../styles/colors';
+import CollapsibleGroup from '../components/UI/CollapsibleGroup';
 
 const EventsPage = (props) => {
     const refreshEvents = () => {

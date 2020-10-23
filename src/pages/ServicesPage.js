@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { View, ScrollView, StyleSheet, Text, Button } from 'react-native';
-import DateTimePicker from '@react-native-community/datetimepicker';
 import { Picker } from '@react-native-community/picker';
+import dayjs from 'dayjs';
 
-import globalStyles from '~/src/styles/globalStyle';
-import LabelledInput from '~/src/components/UI/LabelledInput';
-import LabelledPicker from '~/src/components/UI/LabelledPicker';
-import emailClient from '~/src/clients/EmailClient';
-import Colors from '~/src/styles/colors';
+import globalStyles from '../styles/globalStyle';
+import LabelledInput from '../components/UI/LabelledInput';
+import LabelledPicker from '../components/UI/LabelledPicker';
+import DateTimePicker from '../components/UI/DateTimePicker';
+import emailClient from '../clients/EmailClient';
+import Colors from '../styles/colors';
 
 const TEMPLE_EMAIL = 'eo@www.svtemplemi.org';
 const SERVICES = [
@@ -34,14 +35,11 @@ const ServicesPage = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
-    const [date, setDate] = useState(new Date(Date.now()));
+    const [date, setDate] = useState(dayjs().add(1, 'day').startOf('hour'));
     const [service, setService] = useState('');
     const [error, setError] = useState(null);
-    const [showDatePicker, setShowDatePicker] = useState(false);
-    const [showTimePicker, setShowTimePicker] = useState(false);
 
-    const updateDate = (_, selectedDate) => {
-        toggleDatePicker();
+    const updateDate = (selectedDate) => {
         if (!selectedDate) {
             return;
         }
@@ -53,8 +51,7 @@ const ServicesPage = () => {
         setDate(newDate);
     };
 
-    const updateTime = (_, selectedDate) => {
-        toggleTimePicker();
+    const updateTime = (selectedDate) => {
         if (!selectedDate) {
             return;
         }
@@ -63,6 +60,10 @@ const ServicesPage = () => {
         newDate.setHours(selectedDate.getHours());
         newDate.setMinutes(selectedDate.getMinutes());
         setDate(newDate);
+    };
+
+    const updateDateTime = (selectedDate) => {
+        setDate(new Date(selectedDate));
     };
 
     const formatDate = (date) => {
@@ -75,9 +76,6 @@ const ServicesPage = () => {
             minute: '2-digit',
         });
     };
-
-    const toggleDatePicker = () => setShowDatePicker(!showDatePicker);
-    const toggleTimePicker = () => setShowTimePicker(!showTimePicker);
 
     const onSubmit = async () => {
         setError(null);
@@ -93,54 +91,17 @@ const ServicesPage = () => {
         const to = TEMPLE_EMAIL;
         const subject = `Requested Service: ${service}`;
         const body = `
-<!DOCTYPE html PUBLIC “-//W3C//DTD XHTML 1.0 Transitional//EN”
-        “https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd”>
-<html xmlns=“https://www.w3.org/1999/xhtml”>
-
-<head>
-    <title>Test Email Sample</title>
-    <meta http–equiv=“Content-Type” content=“text/html; charset=UTF-8” />
-    <meta http–equiv=“X-UA-Compatible” content=“IE=edge” />
-    <meta name=“viewport” content=“width=device-width, initial-scale=1.0 “ />
-    <style>
-        table, th, td {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 5px;
-            text-align: left;
-        }
-        </style>
-</head>
-
-<body>
-    <table style="width:95%">
-        <tr>
-            <th>Name</th>
-            <td>${name}</td>
-        </tr>
-        <tr>
-            <th>Email</th>
-            <td>${email}</td>
-        </tr>
-        <tr>
-            <th>Phone Number</th>
-            <td>${phoneNumber}</td>
-        </tr>
-        <tr>
-            <th>Date Requested</th>
-            <td>${formatDate(date)}</td>
-        </tr>
-        <tr>
-            <th>Service Requested</th>
-            <td>${service}</td>
-        </tr>
-    </table>
-</body>
+Name: ${name}
+Email: ${email}
+Phone Number: ${phoneNumber}
+Date Requested: ${formatDate(date)}
+Service: ${service}
 `;
         await emailClient.sendEmail(to, subject, body);
     };
+
+    const now = dayjs();
+    const oneYear = dayjs().add(1, 'year');
 
     return (
         <ScrollView style={globalStyles.body}>
@@ -180,32 +141,15 @@ const ServicesPage = () => {
                     value={formatDate(date)}
                     editable={false}
                 />
-                <View style={[styles.buttonContainer, globalStyles.textGroup]}>
-                    <Button
-                        style={styles.button}
-                        onPress={toggleDatePicker}
-                        title="Set Date"
-                    />
-                    <Button
-                        style={styles.button}
-                        onPress={toggleTimePicker}
-                        title="Set Time"
-                    />
-                    {showDatePicker && (
-                        <DateTimePicker
-                            value={date}
-                            onChange={updateDate}
-                            minimumDate={new Date(Date.now())}
-                        />
-                    )}
-                    {showTimePicker && (
-                        <DateTimePicker
-                            value={date}
-                            onChange={updateTime}
-                            mode="time"
-                        />
-                    )}
-                </View>
+                <DateTimePicker
+                    setDate={updateDate}
+                    setTime={updateTime}
+                    setDateTime={updateDateTime}
+                    minimumDate={now}
+                    maximumDate={oneYear}
+                    minuteInterval={15}
+                    date={date}
+                />
                 <LabelledPicker
                     style={globalStyles.textGroup}
                     label="Requested Service"

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { getHomePage } from '../redux/PageSlice';
 import globalStyles from '../styles/globalStyle';
 import Loading from '../components/UI/Loading';
-import Headline from '~/src/components/Home/Headline';
+import Headline from '../components/Home/Headline';
 
 const HomePage = (props) => {
     const refreshHomePage = () => {

@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 import { getPage } from '../redux/PageSlice';
 import Loading from '../components/UI/Loading';
-import Article from '../components/Articles/Article';
 
 const ArticlePage = (props) => {
     const { articleId } = props.route.params;
@@ -23,7 +22,7 @@ const ArticlePage = (props) => {
     }
 
     const content = pages[articleId].content.rendered;
-    return <Article content={content} />;
+    return null;
 };
 
 const mapStateToProps = (state) => state.pages;

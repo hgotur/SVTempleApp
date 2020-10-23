@@ -4,7 +4,7 @@ import wordPressClient from '../clients/WordPressClient';
 import {
     getEventsFromHTML,
     getHomePageHeadlinesFromHTML,
-} from '~/src/utils/HTMLUtils';
+} from '../utils/HTMLUtils';
 
 const HOME_PAGE_ID = 6;
 const EVENT_PAGE_ID = 859;

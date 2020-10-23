@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { TouchableOpacity, Text, Image, StyleSheet } from 'react-native';
-import Colors from '~/src/styles/colors';
+import Colors from '../../styles/colors';
 
 const Headline = (props) => {
     const [collapsed, setCollapsed] = useState(false);
