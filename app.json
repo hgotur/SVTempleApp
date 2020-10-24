@@ -28,6 +28,7 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "App for SV Temple attendees, designed to keep users up-to-date about temple events and religious occasions."
   }
 }
