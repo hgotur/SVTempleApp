@@ -5,6 +5,8 @@ import RNDateTimePicker from '@react-native-community/datetimepicker';
 import Colors from '../../styles/colors';
 import globalStyles from '../../styles/globalStyle';
 
+const DEFAULT_MINUTE_INTERVAL = 1;
+
 const DateTimePicker = (props) => {
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [showTimePicker, setShowTimePicker] = useState(false);
@@ -19,7 +21,6 @@ const DateTimePicker = (props) => {
         setDateTime,
         minimumDate,
         maximumDate,
-        minuteInterval,
     } = props;
 
     const updateDateTimeIos = (_, selectedDate) => {
@@ -36,6 +37,10 @@ const DateTimePicker = (props) => {
         setTime(selectedDate);
     };
 
+    const minuteInterval = props.minuteInterval
+        ? props.minuteInterval
+        : DEFAULT_MINUTE_INTERVAL;
+
     if (Platform.OS === 'ios') {
         return (
             <View style={[styles.buttonContainer, globalStyles.textGroup]}>
@@ -44,7 +49,7 @@ const DateTimePicker = (props) => {
                     onChange={updateDateTimeIos}
                     minimumDate={minimumDate}
                     maximumDate={maximumDate}
-                    minuteInterval={15}
+                    minuteInterval={minuteInterval}
                     mode="datetime"
                     style={styles.iosPicker}
                 />
@@ -75,7 +80,7 @@ const DateTimePicker = (props) => {
                     <RNDateTimePicker
                         value={date}
                         onChange={updateTimeAndroid}
-                        minuteInterval={15}
+                        minuteInterval={minuteInterval}
                         mode="time"
                     />
                 )}
