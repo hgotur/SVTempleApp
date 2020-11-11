@@ -10,25 +10,26 @@ import DateTimePicker from '../components/UI/DateTimePicker';
 import emailClient from '../clients/EmailClient';
 import Colors from '../styles/colors';
 
-const TEMPLE_EMAIL = 'eo@www.svtemplemi.org';
+const TEMPLE_EMAIL = 'services@www.svtemplemi.org';
 const SERVICES = [
-    'Akshrabyasam',
+    'Aksharabhyasam',
     'Annaprasana',
     'Ayushhomam',
-    'Bumi Pooja',
+    'Bhoomi Pooja',
     'Half Saree',
     'Jananasanthi Homam',
-    'Lakshmi Naraya Pooja',
-    'Namakranam',
-    'Navagraha Shanthi',
+    'Lakshmi Narayana Pooja',
+    'Namakaranam',
+    'Navagraha Shanti',
     'Satyanarayanam Vratham',
     'Seemantham',
     'Shasti Poorthi',
-    'Shrardham',
+    'Shraddham',
     'Tharpanam',
     'Upanayanam',
-    'Vadamal',
+    'Vadamala',
     'Wedding',
+    'Other',
 ];
 
 const ServicesPage = () => {
@@ -39,6 +40,7 @@ const ServicesPage = () => {
         new Date(dayjs().add(1, 'day').startOf('hour').toISOString()),
     );
     const [service, setService] = useState('');
+    const [otherService, setOtherService] = useState('');
     const [error, setError] = useState(null);
 
     const updateDate = (selectedDate) => {
@@ -69,14 +71,8 @@ const ServicesPage = () => {
     };
 
     const formatDate = (date) => {
-        return date.toLocaleString('en-US', {
-            weekday: 'long',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit',
-        });
+        const d = dayjs(date);
+        return d.format('ddd MMM D YYYY h:mm A');
     };
 
     const onSubmit = async () => {
@@ -90,20 +86,24 @@ const ServicesPage = () => {
             return;
         }
 
+        const requestedService = service === 'Other' ? otherService : service;
+
         const to = TEMPLE_EMAIL;
-        const subject = `Requested Service: ${service}`;
+        const subject = `Requested Service: ${requestedService}`;
         const body = `
 Name: ${name}
 Email: ${email}
 Phone Number: ${phoneNumber}
 Date Requested: ${formatDate(date)}
-Service: ${service}
+Service: ${requestedService}
 `;
         await emailClient.sendEmail(to, subject, body);
     };
 
     const now = Date.now();
     const oneYear = new Date(dayjs().add(1, 'year').toISOString());
+
+    const showOther = service === 'Other';
 
     return (
         <ScrollView style={globalStyles.body}>
@@ -120,6 +120,7 @@ Service: ${service}
                     style={globalStyles.textGroup}
                     label="Name"
                     placeholder="Name"
+                    textContentType="name"
                     value={name}
                     onChangeText={setName}
                 />
@@ -127,6 +128,7 @@ Service: ${service}
                     style={globalStyles.textGroup}
                     label="Email"
                     placeholder="Email"
+                    textContentType="emailAddress"
                     value={email}
                     onChangeText={setEmail}
                 />
@@ -134,6 +136,7 @@ Service: ${service}
                     style={globalStyles.textGroup}
                     label="Phone Number"
                     placeholder="(123) 456-7890"
+                    textContentType="telephoneNumber"
                     value={phoneNumber}
                     onChangeText={setPhoneNumber}
                 />
@@ -152,15 +155,30 @@ Service: ${service}
                     minuteInterval={15}
                     date={date}
                 />
-                <LabelledPicker
-                    style={globalStyles.textGroup}
-                    label="Requested Service"
-                    selectedValue={service}
-                    onValueChange={setService}>
-                    {SERVICES.map((value) => (
-                        <Picker.Item label={value} value={value} key={value} />
-                    ))}
-                </LabelledPicker>
+                <View style={globalStyles.textGroup}>
+                    <LabelledPicker
+                        label="Requested Service"
+                        selectedValue={service}
+                        onValueChange={(val) =>
+                            setService(val) || setOtherService('')
+                        }>
+                        {SERVICES.map((value) => (
+                            <Picker.Item
+                                label={value}
+                                value={value}
+                                key={value}
+                            />
+                        ))}
+                    </LabelledPicker>
+                    {showOther && (
+                        <LabelledInput
+                            label="Other"
+                            placeholder="Service Name"
+                            value={otherService}
+                            onChangeText={setOtherService}
+                        />
+                    )}
+                </View>
                 <Text style={[globalStyles.text, styles.error]}>{error}</Text>
                 <Button onPress={onSubmit} title="Submit" />
             </View>
