@@ -116,6 +116,30 @@ Service: ${requestedService}
                     Send the email to submit the request. A temple volunteer
                     will follow up with you via email.
                 </Text>
+                <View style={globalStyles.textGroup}>
+                    <LabelledPicker
+                        label="Requested Service"
+                        selectedValue={service}
+                        onValueChange={(val) =>
+                            setService(val) || setOtherService('')
+                        }>
+                        {SERVICES.map((value) => (
+                            <Picker.Item
+                                label={value}
+                                value={value}
+                                key={value}
+                            />
+                        ))}
+                    </LabelledPicker>
+                    {showOther && (
+                        <LabelledInput
+                            label="Other"
+                            placeholder="Service Name"
+                            value={otherService}
+                            onChangeText={setOtherService}
+                        />
+                    )}
+                </View>
                 <LabelledInput
                     style={globalStyles.textGroup}
                     label="Name"
@@ -155,30 +179,6 @@ Service: ${requestedService}
                     minuteInterval={15}
                     date={date}
                 />
-                <View style={globalStyles.textGroup}>
-                    <LabelledPicker
-                        label="Requested Service"
-                        selectedValue={service}
-                        onValueChange={(val) =>
-                            setService(val) || setOtherService('')
-                        }>
-                        {SERVICES.map((value) => (
-                            <Picker.Item
-                                label={value}
-                                value={value}
-                                key={value}
-                            />
-                        ))}
-                    </LabelledPicker>
-                    {showOther && (
-                        <LabelledInput
-                            label="Other"
-                            placeholder="Service Name"
-                            value={otherService}
-                            onChangeText={setOtherService}
-                        />
-                    )}
-                </View>
                 <Text style={[globalStyles.text, styles.error]}>{error}</Text>
                 <Button onPress={onSubmit} title="Submit" />
             </View>

@@ -8,9 +8,11 @@ import globalStyles from '../../styles/globalStyle';
 const DateTimePicker = (props) => {
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [showTimePicker, setShowTimePicker] = useState(false);
+    const [showIOSPicker, setShowIOSPicker] = useState(true);
 
     const toggleDatePicker = () => setShowDatePicker(!showDatePicker);
     const toggleTimePicker = () => setShowTimePicker(!showTimePicker);
+    const toggleIOSPicker = () => setShowIOSPicker(!showIOSPicker);
 
     const {
         date,
@@ -38,16 +40,23 @@ const DateTimePicker = (props) => {
 
     if (Platform.OS === 'ios') {
         return (
-            <View style={[styles.buttonContainer, globalStyles.textGroup]}>
-                <RNDateTimePicker
-                    value={date}
-                    onChange={updateDateTimeIos}
-                    minimumDate={minimumDate}
-                    maximumDate={maximumDate}
-                    minuteInterval={15}
-                    mode="datetime"
-                    style={styles.iosPicker}
+            <View style={[globalStyles.textGroup]}>
+                <Button
+                    style={styles.button}
+                    onPress={toggleIOSPicker}
+                    title={`${showIOSPicker ? 'Hide' : 'Show'} Date Picker`}
                 />
+                {showIOSPicker &&
+                    <RNDateTimePicker
+                        value={date}
+                        onChange={updateDateTimeIos}
+                        minimumDate={minimumDate}
+                        maximumDate={maximumDate}
+                        minuteInterval={15}
+                        mode="datetime"
+                        style={styles.iosPicker}
+                    />
+                }
             </View>
         );
     } else {
@@ -99,6 +108,7 @@ const styles = StyleSheet.create({
         color: Colors.ErrorRed,
     },
     iosPicker: {
-        width: 360,
+        borderWidth: 1,
+        borderColor: Colors.Black,
     },
 });
