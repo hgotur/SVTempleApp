@@ -10,7 +10,7 @@ import DateTimePicker from '../components/UI/DateTimePicker';
 import emailClient from '../clients/EmailClient';
 import Colors from '../styles/colors';
 
-const TEMPLE_EMAIL = 'services@www.svtemplemi.org';
+const TEMPLE_EMAIL = 'services@svtemplemi.org';
 const SERVICES = [
     'Aksharabhyasam',
     'Annaprasana',
